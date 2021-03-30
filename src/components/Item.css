@@ -1,0 +1,21 @@
+.Item {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid rgb(230, 230, 230);
+    background-color: white;
+    border-radius: 25px;
+    padding: 25px;
+    margin: 10px;
+    width: 30%;
+    height: 600px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.Item-img {
+    width: 150px;
+}
+
+.Item-block {
+    margin-top: auto;
+    align-items: flex-end;
+}
