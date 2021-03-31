@@ -4,7 +4,10 @@ import items from "../reducers/data";
 
 const Store = () => {
 	const products = items.products;
-	console.log(products);
+	Object.keys(items.products).forEach((item) => {
+		items.products[item].count = 0;
+	});
+	console.log(items);
 	return (
 		<div>
 			<h1 className="Store-title"> Welcome to Shoply Web Store</h1>
@@ -14,11 +17,11 @@ const Store = () => {
 					<Item
 						key={item}
 						id={item}
-						name={products[item].name}
+						// name={products[item].name}
 						price={products[item].price}
-						description={products[item].description}
+						// description={products[item].description}
 						image={products[item].image_url}
-						quantity={0}
+						// quantity={0}
 					/>
 					// </div>
 				))}
