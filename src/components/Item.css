@@ -12,10 +12,15 @@
 }
 
 .Item-img {
-    width: 150px;
+    width: 9.375rem;
+
 }
 
 .Item-block {
     margin-top: auto;
     align-items: flex-end;
+}
+
+.Item-top {
+    margin-top: auto;
 }

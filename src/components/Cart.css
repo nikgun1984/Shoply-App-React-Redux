@@ -1,4 +1,8 @@
-.Card {
+.Cart {
     border: 1px black solid;
     border-radius: 10px;
+}
+
+.Cart-title {
+    font-family: "Train One";
 }

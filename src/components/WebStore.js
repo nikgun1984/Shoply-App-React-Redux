@@ -1,12 +1,12 @@
 import Store from "./Store";
-import Card from "./Card";
+import Cart from "./Cart";
 import "./WebStore.css";
 
 const WebStore = () => {
 	return (
 		<div className="WebStore-container">
 			<Store />
-			<Card />
+			<Cart />
 		</div>
 	);
 };

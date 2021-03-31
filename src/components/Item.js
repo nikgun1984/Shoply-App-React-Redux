@@ -1,23 +1,21 @@
 import "./Item.css";
 import Counter from "./Counter";
+import { React, useState } from "react";
 
-const Item = ({ name, price, description, image, quantity }) => {
+const Item = ({ id, name, price, description, image, quantity }) => {
 	return (
-		<div className="Item">
+		<div id={id} className="Item">
+			<h3>{name.toUpperCase()}</h3>
 			<div className="Item-top">
-				<h3>{name.toUpperCase()}</h3>
 				<img src={image} alt="Img is unavailable..." className="Item-img" />
 				<br />
-			</div>
-			<div className="Item-block">
 				<small>
 					<b>Price:</b> ${price}
 				</small>
-				<br />
-				<p>
-					<small>{description}</small>
-				</p>
-				<Counter quantity={quantity} />
+			</div>
+			<div className="Item-block">
+				<p>{description}</p>
+				<Counter price={price} image={image} quantity={quantity} />
 			</div>
 		</div>
 	);

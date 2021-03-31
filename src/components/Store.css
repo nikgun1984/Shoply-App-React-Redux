@@ -8,6 +8,11 @@
     border-radius: 10px;
 }
 
+.Store-title {
+    font-family: "Train One";
+
+}
+
 .Store-wrap {
     flex: 0 0 33.333%;
     display: flex;
