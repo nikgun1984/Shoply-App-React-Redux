@@ -4,10 +4,7 @@ import items from "../reducers/data";
 
 const Store = () => {
 	const products = items.products;
-	const modifiedJSON = Object.keys(items.products).forEach((item) => {
-		items.products[item].count = 0;
-	});
-	console.log(items);
+	console.log(products);
 	return (
 		<div>
 			<h1 className="Store-title"> Welcome to Shoply Web Store</h1>

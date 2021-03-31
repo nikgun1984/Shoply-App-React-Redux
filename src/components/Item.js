@@ -15,7 +15,7 @@ const Item = ({ id, name, price, description, image, quantity }) => {
 			</div>
 			<div className="Item-block">
 				<p>{description}</p>
-				<Counter price={price} image={image} quantity={quantity} />
+				<Counter id={id} price={price} image={image} quantity={quantity} />
 			</div>
 		</div>
 	);

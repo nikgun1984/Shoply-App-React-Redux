@@ -6,3 +6,22 @@
 .Cart-title {
     font-family: "Train One";
 }
+
+.Cart-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.Cart-image {
+    width: 100px;
+    border: 5px solid rgb(240, 229, 229);
+    border-radius: 5px;
+}
+
+.Cart-item-data {
+    text-align: left;
+}
+
+hr {
+    color: black;
+}

@@ -1,29 +1,32 @@
 import "./Counter.css";
-import { useState, useRef } from "react";
-import { addProduct, deleteProduct } from "../actions";
+import { useRef } from "react";
+import { addProduct, deleteProduct, updateProduct } from "../actions";
 import { useDispatch } from "react-redux";
 
-const Counter = ({ id, image, cost, quantity }) => {
-	const refCounter = useRef(0);
+const Counter = ({ id, image, price, quantity }) => {
+	const refCounter = useRef(quantity);
 	const dispatch = useDispatch();
 	const handleAddProduct = (evt) => {
-		refCounter.current = refCounter.current + 1;
-		dispatch(addProduct(id, image, cost, refCounter.current));
 		evt.preventDefault();
+		refCounter.current.value = +refCounter.current.value + 1;
+		console.log(refCounter.current.value);
+		if (+refCounter.current.value === 1) {
+			dispatch(addProduct(id, image, price, refCounter.current.value));
+		} else {
+			dispatch(updateProduct(id, refCounter.current.value));
+		}
 	};
 
 	const handleDeleteProduct = (evt) => {
-		if (refCounter.current - 1 >= 0) {
-			evt.preventDefault();
-			refCounter.current = refCounter.current - 1;
-			dispatch(deleteProduct(id, refCounter.current));
+		evt.preventDefault();
+		if (+refCounter.current.value - 1 >= 0) {
+			refCounter.current.value = +refCounter.current.value - 1;
+			dispatch(deleteProduct(id, refCounter.current.value));
 		}
 	};
 
 	return (
 		<form>
-			<input type="hidden" id="img-hidden" value={image} />
-			<input type="hidden" id="price-hidden" value={cost} />
 			<div className="Counter-container">
 				<button
 					type="submit"

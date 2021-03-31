@@ -6,8 +6,8 @@
     border-radius: 25px;
     padding: 25px;
     margin: 10px;
-    width: 30%;
-    height: 600px;
+    width: 20%;
+    height: 450px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -23,4 +23,23 @@
 
 .Item-top {
     margin-top: auto;
+}
+
+.Item-button {
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.Item-button:hover {
+    background-color: rgb(95, 95, 207, 0.4);
+}
+
+.Item-button:focus {
+    outline: none;
+}
+
+
+.Item-button:active {
+    background-color: rgb(95, 95, 207, 0.7);
 }
