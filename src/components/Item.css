@@ -6,14 +6,14 @@
     border-radius: 25px;
     padding: 25px;
     margin: 10px;
-    width: 20%;
-    height: 450px;
+    width: 30%;
+    height: auto;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
 .Item-img {
-    width: 9.375rem;
-
+    width: 50%;
+    height: auto;
 }
 
 .Item-block {
@@ -39,7 +39,21 @@
     outline: none;
 }
 
-
 .Item-button:active {
     background-color: rgb(95, 95, 207, 0.7);
+}
+
+@media(max-width: 500px) {
+    .Item {
+        width: 100%;
+    }
+
+    .Item-block {
+        margin-top: auto;
+        align-items: center;
+    }
+
+    img.Item-img {
+        width: 150px;
+    }
 }

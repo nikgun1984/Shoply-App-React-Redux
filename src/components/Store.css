@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-around;
     align-items: stretch;
-    margin: 100px;
     flex-wrap: wrap;
     border: 1px solid black;
     border-radius: 10px;
@@ -17,4 +16,13 @@
     flex: 0 0 33.333%;
     display: flex;
     padding: 10px;
+}
+
+@media(max-width: 992px) {
+    .Store {
+        grid-template-columns: 100%;
+        margin: 0;
+        align-items: center;
+        border-radius: 5px;
+    }
 }

@@ -4,7 +4,15 @@
 
 .App-container {
     display: grid;
-    grid-template-columns: 85% 15%;
+    grid-template-columns: 75% 25%;
     grid-template-rows: 100%;
     column-gap: 20px;
+}
+
+@media(max-width: 992px) {
+    .App-container {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
 }

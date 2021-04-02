@@ -1,10 +1,10 @@
 import Counter from "./Counter";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import items from "../reducers/data";
 import "./ItemDetails.css";
+import { useSelector } from "react-redux";
 
-const ItemDetails = () => {
+const ItemDetails = (props) => {
 	const history = useHistory();
 	const { id } = useParams();
 	const details = items.products[id];
@@ -25,13 +25,15 @@ const ItemDetails = () => {
 							<b>Price:</b> ${details.price}
 						</small>
 					</div>
-					<div>
+					<div className="ItemDetails-form">
 						<p>{details.description}</p>
 						<Counter
 							id={id}
 							price={details.price}
 							image={details.image_url}
-							quantity={0}
+							addItem={props.addItem}
+							deleteItem={props.deleteItem}
+							btnTitle="Add Item"
 						/>
 						<button className="Item-button" onClick={() => history.push("/")}>
 							Back to the Store

@@ -1,37 +1,27 @@
 import "./Counter.css";
-import { useRef } from "react";
-import { addProduct, deleteProduct, updateProduct } from "../actions";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 
-const Counter = ({ id, image, price, quantity }) => {
-	const refCounter = useRef(quantity);
-	const dispatch = useDispatch();
-	const handleAddProduct = (evt) => {
-		evt.preventDefault();
-		refCounter.current.value = +refCounter.current.value + 1;
-		console.log(refCounter.current.value);
-		if (+refCounter.current.value === 1) {
-			dispatch(addProduct(id, image, price, refCounter.current.value));
-		} else {
-			dispatch(updateProduct(id, refCounter.current.value));
+const Counter = ({ id, image, price, addItem, quantity, btnTitle }) => {
+	const [count, setCount] = useState(quantity ?? 0);
+
+	const handleMinus = (evt) => {
+		if (count >= 2) {
+			setCount((count) => count - 1);
 		}
 	};
 
-	const handleDeleteProduct = (evt) => {
+	const submitForm = (evt) => {
 		evt.preventDefault();
-		if (+refCounter.current.value - 1 >= 0) {
-			refCounter.current.value = +refCounter.current.value - 1;
-			dispatch(deleteProduct(id, refCounter.current.value));
-		}
+		addItem(id, image, price, count);
 	};
 
 	return (
-		<form>
+		<form onSubmit={submitForm}>
 			<div className="Counter-container">
 				<button
-					type="submit"
+					type="button"
 					className="Counter-btn"
-					onClick={handleAddProduct}
+					onClick={(count) => setCount((count) => count + 1)}
 				>
 					<i className="fas fa-plus-circle fa-2x"></i>
 				</button>
@@ -39,17 +29,14 @@ const Counter = ({ id, image, price, quantity }) => {
 					className="Counter-group-field"
 					type="number"
 					name="quantity"
-					ref={refCounter}
-					value={refCounter.current}
+					min="1"
+					value={count}
 				/>
-				<button
-					type="submit"
-					className="Counter-btn"
-					onClick={handleDeleteProduct}
-				>
+				<button type="button" className="Counter-btn" onClick={handleMinus}>
 					<i className="fas fa-minus-circle fa-2x"></i>
 				</button>
 			</div>
+			<button type="submit">{btnTitle}</button>
 		</form>
 	);
 };

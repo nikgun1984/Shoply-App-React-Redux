@@ -9,7 +9,9 @@
 
 .Cart-item {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .Cart-image {
@@ -19,9 +21,26 @@
 }
 
 .Cart-item-data {
-    text-align: left;
+    text-align: center;
 }
 
-hr {
-    color: black;
+@media(max-width: 992px) {
+    .Cart {
+        margin-top: 20px;
+    }
+
+    .Cart-item {
+        display: block;
+        margin: 10%;
+    }
+
+    .Cart-image {
+        margin: 10%;
+    }
+
+    .Cart-item-data {
+        text-align: center;
+    }
+
+
 }
