@@ -31,6 +31,7 @@ const Counter = ({ id, image, price, addItem, quantity, btnTitle }) => {
 					name="quantity"
 					min="1"
 					value={count}
+					onChange={() => count}
 				/>
 				<button type="button" className="Counter-btn" onClick={handleMinus}>
 					<i className="fas fa-minus-circle fa-2x"></i>

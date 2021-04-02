@@ -1,6 +1,24 @@
-import { ADD_ITEM, DELETE_ITEM, UPDATE_ITEM } from "../actionTypes";
+import {
+	ADD_ITEM,
+	DELETE_ITEM,
+	UPDATE_ITEM,
+	APPLY_DISCOUNT,
+	TOTAL_AMOUNT,
+	IS_APPLIED,
+	DISCOUNT,
+} from "../actionTypes";
 
-const INITIAL_STATE = { products: [] };
+const codes = { REMOVE10: 0.1, REMOVE20: 0.2, REMOVE30: 0.3 };
+
+const INITIAL_STATE = {
+	products: [],
+	total: 0,
+	discountedTotal: 0,
+	discount: 0,
+	appliedDiscount: false,
+	tax: 0,
+};
+
 export default function cart(state = INITIAL_STATE, action) {
 	switch (action.type) {
 		case ADD_ITEM:
@@ -22,6 +40,38 @@ export default function cart(state = INITIAL_STATE, action) {
 					}
 				}),
 			};
+		case TOTAL_AMOUNT:
+			return {
+				...state,
+				total: state.products.reduce((acc, val) => {
+					return acc + +(val.price * val.quantity).toFixed(2);
+				}, 0),
+			};
+
+		case APPLY_DISCOUNT:
+			return {
+				...state,
+				discountedTotal:
+					action.discountCode in codes
+						? +(state.total - state.total * codes[action.discountCode]).toFixed(
+								2
+						  )
+						: state.total,
+			};
+		case DISCOUNT:
+			return {
+				...state,
+				discount:
+					action.code in codes
+						? +(state.total * codes[action.code]).toFixed(3)
+						: 0,
+			};
+		case IS_APPLIED:
+			return {
+				...state,
+				appliedDiscount: true,
+			};
+
 		default:
 			return state;
 	}

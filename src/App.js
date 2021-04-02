@@ -4,20 +4,51 @@ import Store from "./components/Store";
 import Cart from "./components/Cart";
 import ItemDetails from "./components/ItemDetails";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, deleteProduct, updateProduct } from "./actions";
+import {
+	addProduct,
+	deleteProduct,
+	updateProduct,
+	totalAmount,
+	applyDiscount,
+	isCodeApplied,
+	discount,
+	getTax,
+} from "./actions";
 
 function App() {
 	const dispatch = useDispatch();
 	const products = useSelector((store) => store.products);
+	const total = useSelector((store) => store.total);
+	const isApplied = useSelector((store) => store.appliedDiscount);
+	const discountedTotal = useSelector((store) => store.discountedTotal);
+	const amountOff = useSelector((store) => store.discount);
+
 	const addToStore = (id, image, price, count) => {
 		const product = products.filter((item) => item.id === id)[0];
-		!product
-			? dispatch(addProduct(id, image, price, count))
-			: dispatch(updateProduct(id, count));
+		if (!product) {
+			dispatch(addProduct(id, image, price, count));
+			dispatch(totalAmount());
+		} else {
+			dispatch(updateProduct(id, count));
+			dispatch(totalAmount());
+		}
 	};
 
-	const deleteFromStore = (count, id) => {
+	const deleteFromStore = (id, count) => {
 		dispatch(deleteProduct(id, count));
+		dispatch(totalAmount());
+	};
+
+	const applyCode = (code) => {
+		dispatch(applyDiscount(code));
+	};
+
+	const getDiscount = (code) => {
+		dispatch(discount(code));
+	};
+
+	const codeApplied = () => {
+		dispatch(isCodeApplied());
 	};
 
 	return (
@@ -41,6 +72,13 @@ function App() {
 						addItem={addToStore}
 						deleteItem={deleteFromStore}
 						products={products}
+						total={total}
+						applyCode={applyCode}
+						isApplied={isApplied}
+						codeApplied={codeApplied}
+						getDiscount={getDiscount}
+						discountedTotal={discountedTotal}
+						amountOff={amountOff}
 					/>
 				</div>
 			</header>

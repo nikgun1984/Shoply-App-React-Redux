@@ -13,7 +13,7 @@ const Item = ({ id, price, image }) => {
 				</small>
 			</div>
 			<div className="Item-block">
-				<button class="Item-button" onClick={() => history.push(`/${id}`)}>
+				<button className="Item-button" onClick={() => history.push(`/${id}`)}>
 					More Details...
 				</button>
 			</div>

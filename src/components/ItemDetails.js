@@ -2,7 +2,6 @@ import Counter from "./Counter";
 import { useParams, useHistory } from "react-router-dom";
 import items from "../reducers/data";
 import "./ItemDetails.css";
-import { useSelector } from "react-redux";
 
 const ItemDetails = (props) => {
 	const history = useHistory();
@@ -34,6 +33,7 @@ const ItemDetails = (props) => {
 							addItem={props.addItem}
 							deleteItem={props.deleteItem}
 							btnTitle="Add Item"
+							taxed={props.taxed}
 						/>
 						<button className="Item-button" onClick={() => history.push("/")}>
 							Back to the Store

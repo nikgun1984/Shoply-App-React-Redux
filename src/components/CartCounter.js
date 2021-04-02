@@ -15,35 +15,31 @@ const CartCounter = ({ id, image, price, quantity, addItem, deleteItem }) => {
 
 	const handleDeleteItem = (evt) => {
 		evt.preventDefault();
-		if (countRef.current - 1 > 0) {
+		if (countRef.current > 1) {
 			countRef.current = quantity - 1;
 			addItem(id, image, price, countRef.current);
 		} else {
-			console.log("HERE");
-			console.log(countRef.current);
 			deleteItem(id, countRef.current);
 		}
 	};
 
 	return (
-		<form>
-			<div className="Counter-container">
-				<button
-					// type="button"
-					className="Counter-btn"
-					onClick={handleAddItem}
-				>
-					<i className="fas fa-plus-circle fa-2x"></i>
-				</button>
-				<button
-					// type="button"
-					className="Counter-btn"
-					onClick={handleDeleteItem}
-				>
-					<i className="fas fa-minus-circle fa-2x"></i>
-				</button>
-			</div>
-		</form>
+		<div className="Counter-container">
+			<button
+				// type="button"
+				className="Counter-btn"
+				onClick={handleAddItem}
+			>
+				<i className="fas fa-plus-circle fa-2x"></i>
+			</button>
+			<button
+				// type="button"
+				className="Counter-btn"
+				onClick={handleDeleteItem}
+			>
+				<i className="fas fa-minus-circle fa-2x"></i>
+			</button>
+		</div>
 	);
 };
 
