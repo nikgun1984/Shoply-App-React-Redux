@@ -12,7 +12,6 @@ import {
 	applyDiscount,
 	isCodeApplied,
 	discount,
-	getTax,
 } from "./actions";
 
 function App() {

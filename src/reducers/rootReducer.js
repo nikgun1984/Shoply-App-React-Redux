@@ -16,7 +16,6 @@ const INITIAL_STATE = {
 	discountedTotal: 0,
 	discount: 0,
 	appliedDiscount: false,
-	tax: 0,
 };
 
 export default function cart(state = INITIAL_STATE, action) {
