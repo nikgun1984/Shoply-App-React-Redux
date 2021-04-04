@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { createStore, compose } from "redux";
 import rootReducer from "./reducers/rootReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 
@@ -29,8 +29,8 @@ function loadFromLocalStorage() {
 // to overwrite any values that we already have saved
 const store = createStore(
 	rootReducer,
-	loadFromLocalStorage(),
-	composeWithDevTools()
+	// compose will accept multiple enhanced functions in the store
+	compose(loadFromLocalStorage(), composeWithDevTools())
 );
 
 // listen for store changes and use saveToLocalStorage to
